@@ -27,6 +27,7 @@ $(document).ready(function () {
             trainDestinationDatabase: trainDestination,
             trainFrequencyDatabase: trainFrequency,
             firstTrainTimeDatabase: firstTrainTime,
+            currentTime: firebase.database.ServerValue.TIMESTAMP
         })
 
     });
@@ -37,6 +38,11 @@ $(document).ready(function () {
         trainDestination = snapVal.trainDestinationDatabase;
         trainFrequency = snapVal.trainFrequencyDatabase;
         firstTrainTime = snapVal.firstTrainTimeDatabase;
+        trainFrequencyToInt = parseInt(snapVal.trainFrequencyDatabase)
+
+        currentTime = snapVal.currentTime;
+        convertedTime = moment(snapVal.currentTime).format("HH:mm")
+        console.log(convertedTime)
         $("#table-body").prepend("<tr id='new-train-row'></tr>")
         $("#new-train-row").append("<td id='train-name'></td>");
         $("#new-train-row").append("<td id='train-destination'></td>");
