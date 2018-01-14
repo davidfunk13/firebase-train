@@ -19,87 +19,102 @@
 </head>
 
 <body>
-        <div class="container">
-                <div class="row">
-                    <div class="col-md-12"><img class="img-responsive" src="assets/images/tte-banner.jpg" width="100%"></div>
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><strong><span style="text-decoration: underline;">Current Train Schedule</span></strong></h3></div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Train Name</th>
-                                                <th>Destination </th>
-                                                <th>Frequency (min)</th>
-                                                <th>Next Arrival</th>
-                                                <th>Minutes Away</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Cell 1</td>
-                                                <td>Cell 2</td>
-                                                <td>Cell 2</td>
-                                                <td>Cell 2</td>
-                                                <td>Cell 2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cell 3</td>
-                                                <td>Cell 2</td>
-                                                <td>Cell 2</td>
-                                                <td>Cell 2</td>
-                                                <td>Cell 4</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cell 1</td>
-                                                <td>Cell 2</td>
-                                                <td>Cell 3</td>
-                                                <td>Cell 4</td>
-                                                <td>Cell 5</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cell 1</td>
-                                                <td>Cell 2</td>
-                                                <td>Cell 3</td>
-                                                <td>Cell 4</td>
-                                                <td>Cell 5</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img class="img-responsive" src="assets/images/tte-banner.jpg" width="100%">
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <strong>
+                                <span style="text-decoration: underline;">Current Train Schedule</span>
+                            </strong>
+                        </h3>
                     </div>
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><strong><span style="text-decoration: underline;">Add Train</span></strong></h3></div>
-                            <div class="panel-body">
-                                <label>Train Name</label>
-                                <form>
-                                    <input class="form-control input-form" type="text" id="train-name-input">
-                                    <label>Destination </label>
-                                </form>
-                                <form>
-                                    <input class="form-control input-form" type="text" id="destination-input">
-                                    <label>First Train Time (HH:mm -military time)</label>
-                                </form>
-                                <form>
-                                    <input class="form-control input-form" type="text" id="first-train-time-input">
-                                </form>
-                                <form>
-                                    <label>Frequency (minutes)</label>
-                                    <input class="form-control input-form" type="text" id="frequency-input">
-                                </form>
-                                <button class="btn btn-default" type="button" id="submit-button">Submit </button>
-                            </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Train Name</th>
+                                        <th>Destination </th>
+                                        <th>Frequency (min)</th>
+                                        <th>Next Arrival</th>
+                                        <th>Minutes Away</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cell 1</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cell 3</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cell 1</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 3</td>
+                                        <td>Cell 4</td>
+                                        <td>Cell 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cell 1</td>
+                                        <td>Cell 2</td>
+                                        <td>Cell 3</td>
+                                        <td>Cell 4</td>
+                                        <td>Cell 5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <strong>
+                                <span style="text-decoration: underline;">Add Train</span>
+                            </strong>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <label>Train Name</label>
+                            <input class="form-control input-form" type="text" id="train-name-input" value="Input Train Name">
+
+                        </form>
+                        <form>
+                            <label>Destination </label>
+                            <input class="form-control input-form" type="text" id="destination-input" value="Input Destination">
+
+                        </form>
+
+                        <form>
+                            <label>First Train Time (HH:mm -military time)</label>
+                            <input class="form-control input-form" type="text" id="first-train-time-input" value="Input Time of First Train">
+                        </form>
+                        <form>
+                            <label>Frequency (minutes)</label>
+                            <input class="form-control input-form" type="text" id="frequency-input" value="Input Train Frequency">
+                        </form>
+                        <button class="btn btn-default" type="button" id="submit-button">Submit </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="footer">
         <p>&copy; 2017 Dave Funk</p>
     </footer>
