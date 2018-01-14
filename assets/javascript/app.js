@@ -16,10 +16,6 @@ $(document).ready(function () {
     var trainFrequency = 0;
     var firstTrainTime = 0;
 
-
-    // for (var i = 0; i < ?.length; i++) {
-
-    // }
     $("#submit-button").on("click", function (event) {
         event.preventDefault();
         trainName = $("#train-name-input").val();
@@ -32,7 +28,7 @@ $(document).ready(function () {
         };
 
 
-        database.ref().set({
+        database.ref().push({
             trainNameDatabase: trainName,
             trainDestinationDatabase: trainDestination,
             trainFrequencyDatabase: trainFrequency,
@@ -40,19 +36,14 @@ $(document).ready(function () {
         })
 
     });
-    database.ref().on("value", function (snap) {
+    database.ref().on("child_added", function (snap) {
         snapVal = snap.val();
         console.log(snapVal)
-        // $("#table-body").html('<tr id="train-row"></tr>')
-        // for (var i = 0; i < 5; i++) 
-        //     $("#train-row").html("<td></td>")
-           
-        // }
-        // $("#train-name-cell"+ i).text(snapVal.trainNameDatabase);
-        // $("#train-destination-cell"+i).text(snapVal.trainDestinationDatabase);
-        // trainDestination = $("#destination-input").val();
-        // trainFrequency = $("#frequency-input").val();
-        // firstTrainTime = $("#first-train-time-input").val();
+        $('#cell0').text(snapVal.trainNameDatabase);
+        $('#cell1').text(snapVal.trainDestinationDatabase);
+        $('#cell2').text(snapVal.trainFrequencyDatabase);
+        $('#cell3').text(snapVal.firstTrainTimeDatabase);
+        $('#cell4').text("hey hey");
     });
 
 
