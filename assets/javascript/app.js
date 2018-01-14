@@ -11,21 +11,15 @@ $(document).ready(function () {
     firebase.initializeApp(config);
 
     var database = firebase.database();
-    var trainName = "";
-    var trainDestination = "";
-    var trainFrequency = 0;
-    var firstTrainTime = 0;
 
     $("#submit-button").on("click", function (event) {
         event.preventDefault();
-        trainName = $("#train-name-input").val();
-        trainDestination = $("#destination-input").val();
-        trainFrequency = $("#frequency-input").val();
-        firstTrainTime = $("#first-train-time-input").val();
-        $("#table-body").append("<tr id='train-row'></tr>")
-        for (var i = 0; i < 5; i++) {
-            $("#train-row").append("<td id='cell"+i+"'></td>");
-        };
+        trainName = $("#train-name-input").val().trim();
+        trainDestination = $("#destination-input").val().trim();
+        trainFrequency = $("#frequency-input").val().trim();
+        firstTrainTime = $("#first-train-time-input").val().trim();
+        
+        
 
 
         database.ref().push({
@@ -39,11 +33,19 @@ $(document).ready(function () {
     database.ref().on("child_added", function (snap) {
         snapVal = snap.val();
         console.log(snapVal)
-        $('#cell0').text(snapVal.trainNameDatabase);
-        $('#cell1').text(snapVal.trainDestinationDatabase);
-        $('#cell2').text(snapVal.trainFrequencyDatabase);
-        $('#cell3').text(snapVal.firstTrainTimeDatabase);
-        $('#cell4').text("hey hey");
+        trainName = snapVal.trainNameDatabase;
+        trainDestination = snapVal.trainDestinationDatabase;
+        trainFrequency = snapVal.trainFrequencyDatabase;
+        firstTrainTime = snapVal.firstTrainTimeDatabase;
+        $("#table-body").append("<tr id='new-train-row'></tr>")
+        $("#new-train-row").append("<td id='train-name'></td>");
+        $("#new-train-row").append("<td id='train-destination'></td>");
+        $("#new-train-row").append("<td id='train-frequency'></td>");
+        $("#new-train-row").append("<td id='train-first-time'></td>");
+        $("#train-name").html(trainName);
+        $("#train-destination").html(trainDestination);
+        $("#train-frequency").html(trainFrequency);
+        $("#train-first-time").html(firstTrainTime);
     });
 
 
