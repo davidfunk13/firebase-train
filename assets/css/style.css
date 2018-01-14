@@ -1,0 +1,14 @@
+.content{
+    border: 1px solid black;
+}
+#train-table-container{
+    height: 400px;
+}
+#graphic{
+    height: 1000px
+    
+}
+#input-forms{
+    height: 400px;
+    margin-top: -570px;
+}
