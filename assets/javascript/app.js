@@ -16,7 +16,7 @@ $(document).ready(function () {
     var trainFrequency = 0;
     var firstTrainTime = 0;
 
-  
+
     // for (var i = 0; i < ?.length; i++) {
 
     // }
@@ -26,6 +26,11 @@ $(document).ready(function () {
         trainDestination = $("#destination-input").val();
         trainFrequency = $("#frequency-input").val();
         firstTrainTime = $("#first-train-time-input").val();
+        $("#table-body").append("<tr id='train-row'></tr>")
+        for (var i = 0; i < 5; i++) {
+            $("#train-row").append("<td id='cell"+i+"'></td>");
+        };
+
 
         database.ref().set({
             trainNameDatabase: trainName,
@@ -38,7 +43,13 @@ $(document).ready(function () {
     database.ref().on("value", function (snap) {
         snapVal = snap.val();
         console.log(snapVal)
-        $("#train-name-cell").text(snapVal.trainNameDatabase);
+        // $("#table-body").html('<tr id="train-row"></tr>')
+        // for (var i = 0; i < 5; i++) 
+        //     $("#train-row").html("<td></td>")
+           
+        // }
+        // $("#train-name-cell"+ i).text(snapVal.trainNameDatabase);
+        // $("#train-destination-cell"+i).text(snapVal.trainDestinationDatabase);
         // trainDestination = $("#destination-input").val();
         // trainFrequency = $("#frequency-input").val();
         // firstTrainTime = $("#first-train-time-input").val();
