@@ -18,10 +18,6 @@ $(document).ready(function () {
         trainDestination = $("#destination-input").val().trim();
         trainFrequency = $("#frequency-input").val().trim();
         firstTrainTime = $("#first-train-time-input").val().trim();
-
-
-
-
         database.ref().push({
             trainNameDatabase: trainName,
             trainDestinationDatabase: trainDestination,
@@ -34,15 +30,16 @@ $(document).ready(function () {
     database.ref().on("child_added", function (snap) {
         snapVal = snap.val();
         console.log({"Snap":snapVal})
-        serverCurrentTime = snapVal.currentTime
-        var serverStampString = snapVal.currentTime.toString();
-        console.log(moment(serverCurrentTime).format("HH:mm"))
-
         trainName = snapVal.trainNameDatabase;
         trainDestination = snapVal.trainDestinationDatabase;
         trainFrequency = snapVal.trainFrequencyDatabase;
-        firstTrainTime = snapVal.firstTrainTimeDatabase;
-        var nextArrivalTime = getNextArrival(firstTrainTime, trainFrequency);
+        firstTrainTime = moment(snapVal.firstTrainTimeDatabase, "hh:mm");
+        console.log(firstTrainTime);
+        // DIFF BETWEEN NOW AND FIRST TRAIN TIME ARRIVAL IN MINUTES % FREQUENCY = 
+        var timeRemainder = moment().diff(firstTrainTime, "minutes") % trainFrequency;
+        var minutesLeft = trainFrequency - timeRemainder;
+        var arrivalTime = moment().add(minutesLeft, "m").format("HH:mm A");
+        console.log(minutesLeft, timeRemainder, arrivalTime)
         postHtml(trainName, trainDestination, trainFrequency, firstTrainTime);
     });
 
@@ -51,14 +48,16 @@ $(document).ready(function () {
         $("#new-train-row").append("<td id='train-name'></td>");
         $("#new-train-row").append("<td id='train-destination'></td>");
         $("#new-train-row").append("<td id='train-frequency'></td>");
-        $("#new-train-row").append("<td id='train-first-time'></td>");
+        $("#new-train-row").append("<td id='train-next-arrival'></td>");
         $("#train-name").html(trainName);
         $("#train-destination").html(trainDestination);
         $("#train-frequency").html(trainFrequency);
-        $("#train-first-time").html(firstTrainTime);
+        $("#train-next-arrival").html(firstTrainTime);
+        $("")
     }
 
     function getNextArrival(firstTrainTime, trainFrequency) {
+        
     }
 
 });
