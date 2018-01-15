@@ -33,15 +33,14 @@ $(document).ready(function () {
     });
     database.ref().on("child_added", function (snap) {
         snapVal = snap.val();
-        console.log({"Snap":snapVal})
-        serverCurrentTime = snapVal.currentTime
-        var serverStampString = snapVal.currentTime.toString();
-        console.log(moment(serverCurrentTime).format("HH:mm"))
-
+        console.log(snapVal)
         trainName = snapVal.trainNameDatabase;
         trainDestination = snapVal.trainDestinationDatabase;
         trainFrequency = snapVal.trainFrequencyDatabase;
         firstTrainTime = snapVal.firstTrainTimeDatabase;
+        console.log(moment(firstTrainTime))
+
+        trainFrequencyToInt = parseInt(snapVal.trainFrequencyDatabase)
         var nextArrivalTime = getNextArrival(firstTrainTime, trainFrequency);
         postHtml(trainName, trainDestination, trainFrequency, firstTrainTime);
     });
@@ -59,6 +58,7 @@ $(document).ready(function () {
     }
 
     function getNextArrival(firstTrainTime, trainFrequency) {
+        console.log(moment().diff(moment(firstTrainTime),"hours"))
     }
 
 });
